@@ -24,9 +24,8 @@ class MyApp extends StatelessWidget {
                   child: Row(
                     children: const [
                       CircleAvatar(
-                        child: Text("R"),
+                        child: Text("P"),
                       ),
-                      SizedBox(width: 8),
                       Text(
                         "Rafael Silva",
                         style: TextStyle(fontWeight: FontWeight.bold),
@@ -43,47 +42,9 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
-              const Text(
-                'Minhas estatísticas',
-                style: TextStyle(fontSize: 18),
-              ),
-              const SizedBox(height: 16),
-              Row(
-                children: const [
-                  Icon(Icons.list),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text("Total de notas: "),
-                  Text("0"),
-                ],
-              ),
-              Row(
-                children: const [
-                  Icon(Icons.check),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text("Concluidas: "),
-                  Text("0"),
-                ],
-              ),
-              const SizedBox(height: 12),
               const Divider(),
-              const SizedBox(height: 12),
-              const Text(
-                "Configurações",
-                style: TextStyle(fontSize: 18),
-              ),
-              const SizedBox(height: 12),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('Tema escuro'),
-                  Switch(value: true, onChanged: (val) {}),
-                ],
-              ),
+              Switch(value: true, onChanged: (val) {}),
+
             ],
           ),
         ),

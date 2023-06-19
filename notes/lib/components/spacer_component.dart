@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
 
-class SpaceComponent extends StatelessWidget{
-  final double? size;
+class SpaceComponent extends StatelessWidget {
+  final double size;
   final bool isFull;
   final bool isHorizontal;
 
 // poderia requerer os valores no construtor de fora obrigatorio com o requered antes do this.
-  const SpaceComponent({
-    super.key,
-    this.size = 16,
-    this.isFull = false,
-    this.isHorizontal = false
-
-  });
+  const SpaceComponent(
+      {Key? key,
+      this.size = 16,
+      this.isFull = false,
+      this.isHorizontal = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
-    if(isFull == true){
-      return const Spacer();
-    }
-    return SizedBox(
-      height: size,
-      width: isHorizontal? size:null,
-    ); 
+    return isFull
+        ? const Spacer()
+        : SizedBox(
+            height: size,
+            width: isHorizontal ? size : null,
+          );
   }
-
 }

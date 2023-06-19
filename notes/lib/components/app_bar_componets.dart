@@ -16,7 +16,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text("School"),
+      title: Text(title),
     );
   }
 }

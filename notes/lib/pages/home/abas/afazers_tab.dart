@@ -54,6 +54,13 @@ class _AfazeresTab extends State<AfazeresTab> {
         dataFim: DateTime.now(),
         isConcluido: false,
       ),
+      AfazerEntity(
+        uuid: 'teste2',
+        titulo: 'Teste 2',
+        dataInicio: DateTime.now(),
+        dataFim: DateTime.now(),
+        isConcluido: false,
+      ),
     ];
     super.initState();
   }

@@ -45,14 +45,14 @@ class _AfazeresTab extends State<AfazeresTab> {
         titulo: 'Teste 1',
         dataInicio: DateTime.now(),
         dataFim: DateTime.now(),
-        isConcluido: false,
+        isConcluido: true,
       ),
       AfazerEntity(
         uuid: 'teste2',
         titulo: 'Teste 2',
         dataInicio: DateTime.now(),
         dataFim: DateTime.now(),
-        isConcluido: true,
+        isConcluido: false,
       ),
     ];
     super.initState();
@@ -62,7 +62,6 @@ class _AfazeresTab extends State<AfazeresTab> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SpaceComponent(),
         ElevatedButton(
           onPressed: handleAdd,
           child: const Text('Adicionar'),
@@ -74,6 +73,7 @@ class _AfazeresTab extends State<AfazeresTab> {
             itemCount: _listaAfazeres.length,
             itemBuilder: (context, index) {
               final item = _listaAfazeres.elementAt(index);
+
               return Dismissible(
                 key: Key(item.uuid),
                 onDismissed: (direction) {
@@ -81,13 +81,29 @@ class _AfazeresTab extends State<AfazeresTab> {
                     handleDelete(index);
                   }
                 },
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Card(
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
                     child: Row(children: [
-                      Text(item.titulo),
+                      item.isConcluido!
+                          ? const Icon(
+                              Icons.done_all,
+                              color: Colors.green,
+                            )
+                          : Icon(
+                              Icons.check,
+                              color: Colors.grey.withOpacity(.7),
+                            ),
+                      const SpaceComponent(isHorizontal: true),
+                      Text(
+                        item.titulo,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       const Spacer(),
-                      const Icon(Icons.arrow_back_ios)
+                      const Icon(Icons.arrow_forward_ios)
                     ]),
                   ),
                 ),

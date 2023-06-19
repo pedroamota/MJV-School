@@ -20,7 +20,7 @@ class PerfilTab extends StatelessWidget {
               const SpaceComponent(size: 8, isHorizontal: true),
               const Text('Rafael Silva', style: TextStyle(fontWeight: FontWeight.bold)),
               const SpaceComponent(isFull: true),
-              IconButtonSelector(
+              IconButtonComponent(
                 icon: Icons.more_vert,
                 onPressed: () {},
               ),

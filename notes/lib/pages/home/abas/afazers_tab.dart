@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes/components/spacer_component.dart';
 import 'package:notes/entities/afazer_entity.dart';
+import 'package:notes/pages/home/components/item_widget.dart';
 
 class AfazeresTab extends StatefulWidget {
   const AfazeresTab({
@@ -54,13 +54,6 @@ class _AfazeresTab extends State<AfazeresTab> {
         dataFim: DateTime.now(),
         isConcluido: false,
       ),
-      AfazerEntity(
-        uuid: 'teste2',
-        titulo: 'Teste 2',
-        dataInicio: DateTime.now(),
-        dataFim: DateTime.now(),
-        isConcluido: false,
-      ),
     ];
     super.initState();
   }
@@ -80,41 +73,19 @@ class _AfazeresTab extends State<AfazeresTab> {
             itemCount: _listaAfazeres.length,
             itemBuilder: (context, index) {
               final item = _listaAfazeres.elementAt(index);
-
               return Dismissible(
-                key: Key(item.uuid),
-                onDismissed: (direction) {
-                  if (direction == DismissDirection.startToEnd) {
-                    handleDelete(index);
-                  }
-                },
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(children: [
-                      item.isConcluido!
-                          ? const Icon(
-                              Icons.done_all,
-                              color: Colors.green,
-                            )
-                          : Icon(
-                              Icons.check,
-                              color: Colors.grey.withOpacity(.7),
-                            ),
-                      const SpaceComponent(isHorizontal: true),
-                      Text(
-                        item.titulo,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Spacer(),
-                      const Icon(Icons.arrow_forward_ios)
-                    ]),
-                  ),
-                ),
-              );
+                  key: Key(item.uuid),
+                  onDismissed: (direction) {
+                    if (direction == DismissDirection.startToEnd) {
+                      handleDelete(index);
+                    }
+                  },
+                  child: ItemWidget(
+                    item: item,
+                    onPressed: () {
+                      handleAdd();
+                    },
+                  ));
             },
           ),
         )

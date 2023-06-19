@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class IconButtonSelector  extends StatelessWidget {
+class IconButtonComponent  extends StatelessWidget {
   final double size;
   final IconData icon;
   final Color? color;
   final Function()? onPressed;
 
 
-  const IconButtonSelector ({
+  const IconButtonComponent ({
     super.key, 
     this.onPressed,
     this.icon = Icons.add,

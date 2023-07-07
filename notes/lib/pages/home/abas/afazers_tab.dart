@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:notes/components/spacer_component.dart';
 import 'package:notes/entities/afazer_entity.dart';
 import 'package:notes/pages/home/components/item_widget.dart';
+import 'package:notes/pages/home/components/new_item_widget.dart';
 
 class AfazeresTab extends StatefulWidget {
   const AfazeresTab({
@@ -14,23 +16,26 @@ class AfazeresTab extends StatefulWidget {
 class _AfazeresTab extends State<AfazeresTab> {
   late List<AfazerEntity> _listaAfazeres;
 
-  void handleAdd() {
-    final item = AfazerEntity(
-      uuid: 'teste3',
-      titulo: 'Teste 3',
-      dataInicio: DateTime.now(),
-      dataFim: DateTime.now(),
-      isConcluido: false,
+  void handleAdicionar() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return SimpleDialog(
+          contentPadding: const EdgeInsets.all(16),
+          children: [
+            NewItemWidget(callback: (item) {
+              _listaAfazeres.add(item);
+              setState(() {
+                _listaAfazeres = _listaAfazeres;
+              });
+            }),
+          ],
+        );
+      },
     );
-
-    _listaAfazeres.add(item);
-
-    setState(() {
-      _listaAfazeres = _listaAfazeres;
-    });
   }
 
-  void handleDelete(int index) {
+  void handleExcluir(int index) {
     _listaAfazeres.removeAt(index);
     setState(() {
       _listaAfazeres = _listaAfazeres;
@@ -45,14 +50,14 @@ class _AfazeresTab extends State<AfazeresTab> {
         titulo: 'Teste 1',
         dataInicio: DateTime.now(),
         dataFim: DateTime.now(),
-        isConcluido: true,
+        isConcluido: false,
       ),
       AfazerEntity(
         uuid: 'teste2',
         titulo: 'Teste 2',
         dataInicio: DateTime.now(),
         dataFim: DateTime.now(),
-        isConcluido: false,
+        isConcluido: true,
       ),
     ];
     super.initState();
@@ -63,7 +68,7 @@ class _AfazeresTab extends State<AfazeresTab> {
     return Column(
       children: [
         ElevatedButton(
-          onPressed: handleAdd,
+          onPressed: handleAdicionar,
           child: const Text('Adicionar'),
         ),
         SizedBox(
@@ -74,21 +79,23 @@ class _AfazeresTab extends State<AfazeresTab> {
             itemBuilder: (context, index) {
               final item = _listaAfazeres.elementAt(index);
               return Dismissible(
-                  key: Key(item.uuid),
-                  onDismissed: (direction) {
-                    if (direction == DismissDirection.startToEnd) {
-                      handleDelete(index);
-                    }
+                key: Key(item.uuid),
+                onDismissed: (direction) {
+                  if (direction == DismissDirection.startToEnd) {
+                    handleExcluir(index);
+                  }
+                },
+                child: ItemWidget(
+                  item: item,
+                  onPressed: () {
+                    handleAdicionar();
                   },
-                  child: ItemWidget(
-                    item: item,
-                    onPressed: () {
-                      handleAdd();
-                    },
-                  ));
+                ),
+              );
             },
           ),
-        )
+        ),
+        const SpaceComponent(),
       ],
     );
   }

@@ -4,11 +4,11 @@ import 'package:notes/entities/pokemon_entity.dart';
 import 'http_service.dart';
 
 class PokeApi {
-  final httpService = HttpService();
+  final _httpService = HttpService();
 
-  Future<List<String>> getAllLinks() async {
+  Future<List<String>> _getAllLinks() async {
     //Retorna apenas o nome e link do pokemon
-    Response response = await httpService.getRequest(
+    Response response = await _httpService.getRequest(
       'https://pokeapi.co/api/v2/pokemon',
     );
 
@@ -27,12 +27,12 @@ class PokeApi {
     }
   }
 
-  Future<List<PokemonEntity>> fetchData() async {
-    List<String> listPokeLinks = await getAllLinks();
+  Future<List<PokemonEntity>>? fetchData() async {
+    List<String> listPokeLinks = await _getAllLinks();
     List<PokemonEntity> pokemonList = [];
 
     for (final api in listPokeLinks) {
-      Response response = await httpService.getRequest(api);
+      Response response = await _httpService.getRequest(api);
 
       if (response.statusCode == 200) {
         final resultJson = json.decode(response.body);

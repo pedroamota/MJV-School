@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes/components/app_bar_componets.dart';
-import 'package:notes/pages/home/abas/afazers_tab.dart';
-import 'package:notes/services/poke_api.dart';
+import 'abas/list_pokemon_tab.dart';
 import 'abas/perfil_tab.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,13 +14,14 @@ class _HomePageState extends State<HomePage> {
   late int abaSelecionada;
 
   final List<BottomNavigationBarItem> _abas = [
-    const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+    //Por algum motivo não aceita sem label, o app quebra
+    const BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Todos'),
     const BottomNavigationBarItem(
-        icon: Icon(Icons.account_circle), label: 'Perfil'),
+        icon: Icon(Icons.favorite), label: 'Favotiros'),
   ];
 
   final List<Widget> _conteudos = [
-    const AfazeresTab(),
+    const ListPokemonsTab(),
     const PerfilTab(),
   ];
 
@@ -46,12 +46,6 @@ class _HomePageState extends State<HomePage> {
         currentIndex: abaSelecionada,
         items: _abas,
         onTap: handleTab,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          PokeApi().fetchData();
-        },
-        child: const Icon(Icons.add),
       ),
     );
   }

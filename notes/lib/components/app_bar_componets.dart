@@ -16,7 +16,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title),
+      title: const Center(child: Text('Pokedex')),
     );
   }
 }

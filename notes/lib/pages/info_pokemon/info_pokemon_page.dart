@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:notes/entities/pokemon_entity.dart';
+import 'package:provider/provider.dart';
 import '../../components/spacer_component.dart';
+import '../../providers/favorites_provider.dart';
 import 'components/info_poke_bar_componets.dart';
 
 class InfoPokemonPage extends StatefulWidget {
@@ -17,6 +19,14 @@ class InfoPokemonPage extends StatefulWidget {
 
 class _InfoPokemonPageState extends State<InfoPokemonPage> {
   late PokemonEntity pokemon;
+  late FavoritesProvider listFavoritos;
+
+  void handlefavorite() {
+    listFavoritos.addFavorite(pokemon);
+    setState(() {
+      pokemon.favorite = !pokemon.favorite;
+    });
+  }
 
   @override
   void initState() {
@@ -26,8 +36,13 @@ class _InfoPokemonPageState extends State<InfoPokemonPage> {
 
   @override
   Widget build(BuildContext context) {
+    listFavoritos = Provider.of<FavoritesProvider>(context);
+
     return Scaffold(
-      appBar: const InfoPokemonBarComponent(),
+      appBar: InfoPokemonBarComponent(
+        onPressed: handlefavorite,
+        favorite: pokemon.favorite,
+      ),
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,

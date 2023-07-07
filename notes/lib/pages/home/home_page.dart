@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes/components/app_bar_componets.dart';
 import 'abas/list_pokemon_tab.dart';
-import 'abas/perfil_tab.dart';
+import 'abas/favorites_tab.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _conteudos = [
     const ListPokemonsTab(),
-    const PerfilTab(),
+    const FavoritesTab(),
   ];
 
   void handleTab(int tabIdx) {

@@ -31,6 +31,7 @@ class GridWidget extends StatelessWidget {
             ],
           ),
           onTap: () {
+            //Navigator.pushNamed(context, AppRoutes.detalhe, arguments: aux);
             Navigator.push(
               context,
               MaterialPageRoute(

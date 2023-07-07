@@ -5,6 +5,7 @@ class PokemonEntity {
   double weight;
   List<String> types;
   String sprite;
+  bool favorite;
 
   PokemonEntity({
     required this.uuid,
@@ -13,5 +14,6 @@ class PokemonEntity {
     required this.weight,
     required this.types,
     required this.sprite,
+    this.favorite = false,
   });
 }

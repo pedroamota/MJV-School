@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes/components/app_bar_componets.dart';
 import 'package:notes/pages/home/abas/afazers_tab.dart';
+import 'package:notes/services/poke_api.dart';
 import 'abas/perfil_tab.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,7 +16,8 @@ class _HomePageState extends State<HomePage> {
 
   final List<BottomNavigationBarItem> _abas = [
     const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-    const BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Perfil'),
+    const BottomNavigationBarItem(
+        icon: Icon(Icons.account_circle), label: 'Perfil'),
   ];
 
   final List<Widget> _conteudos = [
@@ -47,7 +49,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          handleTab(1);
+          PokeApi().fetchData();
         },
         child: const Icon(Icons.add),
       ),

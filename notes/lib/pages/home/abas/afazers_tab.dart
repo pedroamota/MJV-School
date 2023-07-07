@@ -4,6 +4,8 @@ import 'package:notes/entities/afazer_entity.dart';
 import 'package:notes/pages/home/components/item_widget.dart';
 import 'package:notes/pages/home/components/new_item_widget.dart';
 
+import '../../../services/poke_api.dart';
+
 class AfazeresTab extends StatefulWidget {
   const AfazeresTab({
     super.key,
@@ -88,7 +90,7 @@ class _AfazeresTab extends State<AfazeresTab> {
                 child: ItemWidget(
                   item: item,
                   onPressed: () {
-                    handleAdicionar();
+                    //PokeApi().getAllPokemon();
                   },
                 ),
               );

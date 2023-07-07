@@ -17,9 +17,9 @@ class PerfilTab extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Row(children: [
               const CircleAvatar(child: Text('R')),
-              const SpaceComponent(size: 8, isHorizontal: true),
+              const SpacerComponent(size: 8, isHorizontal: true),
               const Text('Rafael Silva', style: TextStyle(fontWeight: FontWeight.bold)),
-              const SpaceComponent(isFull: true),
+              const SpacerComponent(isFull: true),
               IconButtonComponent(
                 icon: Icons.more_vert,
                 onPressed: () {},
@@ -27,7 +27,7 @@ class PerfilTab extends StatelessWidget {
             ]),
           ),
         ),
-        const SpaceComponent(),
+        const SpacerComponent(),
         const Text(
           'Minhas estatísticas',
           style: TextStyle(fontSize: 18),
@@ -39,16 +39,16 @@ class PerfilTab extends StatelessWidget {
           Text('Total de notas: '),
           Text('0'),
         ]),
-        const SpaceComponent(),
+        const SpacerComponent(),
         Row(children: const [
           Icon(Icons.list),
           SizedBox(width: 8),
           Text('Concluídas: '),
           Text('0'),
         ]),
-        const SpaceComponent(),
+        const SpacerComponent(),
         const Divider(),
-        const SpaceComponent(),
+        const SpacerComponent(),
         const Text(
           'Minhas estatísticas',
           style: TextStyle(fontSize: 18),
@@ -56,7 +56,7 @@ class PerfilTab extends StatelessWidget {
         const SizedBox(height: 16),
         Row(children: [
           const Text('Tema escuro'),
-          const SpaceComponent(isFull: true),
+          const SpacerComponent(isFull: true),
           Switch(value: true, onChanged: (val) {}),
         ])
       ]),

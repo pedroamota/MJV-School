@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SpaceComponent extends StatelessWidget {
+class SpacerComponent extends StatelessWidget {
   final double size;
   final bool isFull;
   final bool isHorizontal;
 
 // poderia requerer os valores no construtor de fora obrigatorio com o requered antes do this.
-  const SpaceComponent(
+  const SpacerComponent(
       {Key? key,
       this.size = 16,
       this.isFull = false,

@@ -45,6 +45,27 @@ class _InfoPokemonPageState extends State<InfoPokemonPage> {
               const SpacerComponent(),
               const Divider(),
               const SpacerComponent(),
+              SizedBox(
+                height: 34,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: pokemon.types.length,
+                  itemBuilder: (context, index) {
+                    String type = pokemon.types[index];
+
+                    return Card(
+                      elevation: 2,
+                      child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 3,
+                            horizontal: 8,
+                          ),
+                          child: Text(type)),
+                    );
+                  },
+                ),
+              ),
+              const SpacerComponent(),
               Row(
                 children: [
                   Text("Altura: ${pokemon.height.toStringAsFixed(1)} m"),

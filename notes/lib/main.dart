@@ -12,6 +12,5 @@ void main() {
   );
 }
 
-//Provider
 //Thema
 //Subir imagem

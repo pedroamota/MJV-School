@@ -1,9 +1,7 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:notes/components/icon_button_component.dart';
 import 'package:notes/components/spacer_component.dart';
-import 'package:notes/entities/pokemon_entity.dart';
+import 'package:notes/pages/home/components/favorites_view_widget.dart';
 import 'package:provider/provider.dart';
 import '../../../providers/favorites_provider.dart';
 
@@ -16,6 +14,10 @@ class FavoritesTab extends StatefulWidget {
 
 class _FavoritesTabState extends State<FavoritesTab> {
   late FavoritesProvider listFavoritos;
+
+  void onHandler(int index) {
+    listFavoritos.removeFavorite(index);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,15 +45,9 @@ class _FavoritesTabState extends State<FavoritesTab> {
             ),
           ),
           const SpacerComponent(),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * .7,
-            child: ListView.builder(
-              itemCount: listFavoritos.favoritesPokemons.length,
-              itemBuilder: (context, index) {
-                PokemonEntity pokemon = listFavoritos.favoritesPokemons[index];
-                return Text(pokemon.name);
-              },
-            ),
+          FavoritesListViewWidget(
+            listFavoritos: listFavoritos,
+            onHandler: onHandler,
           )
         ],
       ),

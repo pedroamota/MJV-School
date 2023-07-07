@@ -5,9 +5,11 @@ class InfoPokemonBarComponent extends StatelessWidget
   final bool favorite;
   final Function() onPressed;
 
-  const InfoPokemonBarComponent(
-      {Key? key, required this.onPressed, required this.favorite})
-      : super(key: key);
+  const InfoPokemonBarComponent({
+    Key? key,
+    required this.onPressed,
+    required this.favorite,
+  }) : super(key: key);
 
   static Size get size => const Size.fromHeight(kToolbarHeight);
 
